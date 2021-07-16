@@ -4,12 +4,9 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
 function Login(props) {
+  const { handleUser } = props;
   let history = useHistory();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const [option, setOption] = useState("");
   const options = [
@@ -18,6 +15,7 @@ function Login(props) {
     { value: "sports", label: "Sports" },
   ];
   const onSubmit = (data) => {
+    handleUser(true);
     console.log(data, option);
     history.push(`/play/${option}`);
   };

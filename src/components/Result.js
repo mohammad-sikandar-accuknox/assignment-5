@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 function Result(props) {
+  const { handleUser } = props;
   let history = useHistory();
+  useEffect(() => {
+    handleUser(false);
+  },[handleUser]);
+
   const handleRedirect = () => {
     history.push(`/`);
   };
